@@ -23,7 +23,7 @@ class Day9Test {
 
     @ParameterizedTest
     @ArgumentsSource(PartIIArgumentsProvider::class)
-    fun checkPartII(input: String, expected: Long) = runTest {
+    fun checkPartII(input: String, expected: Long) {
         val result = sut.partII(input)
         assertEquals(expected, result)
     }

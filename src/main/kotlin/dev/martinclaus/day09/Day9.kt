@@ -1,6 +1,7 @@
 package dev.martinclaus.day09
 
 import dev.martinclaus.Day
+import kotlin.math.min
 
 class Day9 : Day {
     override val name = "dev.martinclaus.Day 9: Disk Fragmenter"
@@ -14,21 +15,37 @@ class Day9 : Day {
 
         var reverseIndex = blocks.size - 1
         var checksum = 0L
-
-        for(index in blocks.indices) {
-            if (index > reverseIndex) break
+        var offset = 0L
+        for (index in blocks.indices) {
             when (val block = blocks[index]) {
                 is Block.File -> {
-                    checksum += index * block.id
+                    val longRange = offset..<(offset + block.length)
+                    val sumOf = longRange.sumOf { it * block.id }
+                    checksum += sumOf
+                    offset += block.length
                 }
+
                 is Block.Space -> {
-                    if (index >= reverseIndex) break
-                    while (blocks[reverseIndex] is Block.Space) {
-                        reverseIndex--
+                    val files = mutableListOf<Block.File>()
+                    for (i in reverseIndex downTo index) {
+                        if (blocks[i] is Block.File) {
+                            reverseIndex = i
+                            files.add(blocks[i] as Block.File)
+                        }
+                        if (files.sumOf { it.length } >= block.length) {
+                            break
+                        }
                     }
-                    val file = blocks[reverseIndex] as Block.File
-                    reverseIndex--
-                    checksum += index * file.id
+
+                    files.forEach { file ->
+                        val min = min(block.length, file.length)
+                        val longRange = offset..<(offset + min)
+                        val sumOf = longRange.sumOf { it * file.id }
+                        checksum += sumOf
+                        offset += min
+                        block.length -= min
+                        file.length -= min
+                    }
                 }
             }
         }
@@ -37,18 +54,58 @@ class Day9 : Day {
     }
 
     override fun partII(input: String): Long {
-        TODO("Not yet implemented")
+        val blocks = readBlocks(input)
+
+        var checksum = 0L
+        var offset = 0L
+
+        for (index in blocks.indices) {
+            when (val block = blocks[index]) {
+                is Block.File -> {
+                    if (block.id >= 0) {
+                        val longRange = offset..<(offset + block.length)
+                        val sumOf = longRange.sumOf { it * block.id }
+                        checksum += sumOf
+                    }
+                    offset += block.length
+                }
+
+                is Block.Space -> {
+                    val files = mutableListOf<Block.File>()
+                    val reverseIndex = blocks.size - 1
+                    for (i in reverseIndex downTo index) {
+                        val file = blocks[i] as? Block.File ?: continue
+                        if (file.id >= 0 && file.length + files.sumOf { it.length } <= block.length) {
+                            files.add(file)
+                        }
+                    }
+
+                    files.forEach { file ->
+                        val min = min(block.length, file.length)
+                        val longRange = offset..<(offset + min)
+                        val sumOf = longRange.sumOf { it * file.id }
+                        checksum += sumOf
+                        offset += min
+                        file.id = -1
+                    }
+
+                    offset += block.length - files.sumOf { it.length }
+                }
+            }
+        }
+
+        return checksum
     }
 
     private fun readBlocks(input: String): List<Block> {
         var fileIndex = 0
 
-        val blocks = input.trim().flatMapIndexed { index, char ->
+        val blocks = input.trim().mapIndexed { index, char ->
             val length = char.digitToInt()
             if (index % 2 == 0) {
-                (0..<length).map { Block.File(fileIndex, length) }.also { fileIndex++ }
+                Block.File(fileIndex, length).also { fileIndex++ }
             } else {
-                (0..<length).map { Block.Space(length) }
+                Block.Space(length)
             }
         }
         return blocks
@@ -56,6 +113,6 @@ class Day9 : Day {
 }
 
 sealed class Block {
-    data class File(val id: Int, val length: Int) : Block()
-    data class Space(val length: Int) : Block()
+    data class File(var id: Int, var length: Int) : Block()
+    data class Space(var length: Int) : Block()
 }
