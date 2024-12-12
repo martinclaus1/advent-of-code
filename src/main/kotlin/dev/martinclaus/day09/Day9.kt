@@ -10,27 +10,19 @@ class Day9 : Day {
     }
 
     override fun partI(input: String): Long {
-        var fileIndex = 0
-
-        val blocks = input.trim().flatMapIndexed { index, char ->
-            val length = char.digitToInt()
-            if (index % 2 == 0) {
-                (0..<length).map { Block.File(fileIndex) }.also { fileIndex++ }
-            } else {
-                (0..<length).map { Block.Space }
-            }
-        }
+        val blocks = readBlocks(input)
 
         var reverseIndex = blocks.size - 1
         var checksum = 0L
 
-        blocks.forEachIndexed { index, block ->
-            if (index > reverseIndex) return@forEachIndexed
-            when (block) {
+        for(index in blocks.indices) {
+            if (index > reverseIndex) break
+            when (val block = blocks[index]) {
                 is Block.File -> {
                     checksum += index * block.id
                 }
                 is Block.Space -> {
+                    if (index >= reverseIndex) break
                     while (blocks[reverseIndex] is Block.Space) {
                         reverseIndex--
                     }
@@ -47,9 +39,23 @@ class Day9 : Day {
     override fun partII(input: String): Long {
         TODO("Not yet implemented")
     }
+
+    private fun readBlocks(input: String): List<Block> {
+        var fileIndex = 0
+
+        val blocks = input.trim().flatMapIndexed { index, char ->
+            val length = char.digitToInt()
+            if (index % 2 == 0) {
+                (0..<length).map { Block.File(fileIndex, length) }.also { fileIndex++ }
+            } else {
+                (0..<length).map { Block.Space(length) }
+            }
+        }
+        return blocks
+    }
 }
 
 sealed class Block {
-    data class File(val id: Int) : Block()
-    data object Space : Block()
+    data class File(val id: Int, val length: Int) : Block()
+    data class Space(val length: Int) : Block()
 }
