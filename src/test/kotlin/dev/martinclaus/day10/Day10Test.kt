@@ -1,4 +1,4 @@
-package dev.martinclaus.day09
+package dev.martinclaus.day10
 
 import dev.martinclaus.dev.martinclaus.readText
 import org.junit.jupiter.api.extension.ExtensionContext
@@ -10,8 +10,8 @@ import java.util.stream.Stream
 import java.util.stream.Stream.of
 import kotlin.test.assertEquals
 
-class Day9Test {
-    private val sut = Day9()
+class Day10Test {
+    private val sut = Day10()
 
     @ParameterizedTest
     @ArgumentsSource(PartIArgumentsProvider::class)
@@ -29,16 +29,33 @@ class Day9Test {
 
     class PartIArgumentsProvider : ArgumentsProvider {
         override fun provideArguments(context: ExtensionContext): Stream<out Arguments>? = of(
-            Arguments.of("12345", 60),
-            Arguments.of("2333133121414131402", 1928),
-            Arguments.of(Day9.INPUT_FILE.readText(), 6337921897505)
+            Arguments.of("""
+                89010123
+                78121874
+                87430965
+                96549874
+                45678903
+                32019012
+                01329801
+                10456732
+            """.trimIndent(), 36),
+            Arguments.of(Day10.INPUT_FILE.readText(), 468)
         )
     }
 
     class PartIIArgumentsProvider : ArgumentsProvider {
         override fun provideArguments(context: ExtensionContext): Stream<out Arguments>? = of(
-            Arguments.of("2333133121414131402", 2858),
-            Arguments.of(Day9.INPUT_FILE.readText(), 6362722604045)
+            Arguments.of("""
+                89010123
+                78121874
+                87430965
+                96549874
+                45678903
+                32019012
+                01329801
+                10456732
+            """.trimIndent(), 81),
+            Arguments.of(Day10.INPUT_FILE.readText(), 966)
         )
     }
 }
