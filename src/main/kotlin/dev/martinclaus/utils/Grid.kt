@@ -26,7 +26,7 @@ class Grid<T>(private val data: Map<Point, T>) : Collection<T> {
                 row.mapIndexed { x, value -> Point(x, y) to value }
             }.toMap()
 
-            return Grid(data.toMutableMap())
+            return Grid(data)
         }
     }
 
