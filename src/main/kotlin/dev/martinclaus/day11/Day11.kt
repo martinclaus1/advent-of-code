@@ -2,7 +2,7 @@ package dev.martinclaus.day11
 
 import dev.martinclaus.Day
 
-class Day11 : Day {
+class Day11 : Day<Long> {
     override val name = "Plutonian Pebbles"
 
     companion object {

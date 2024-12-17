@@ -2,7 +2,7 @@ package dev.martinclaus.day03
 
 import dev.martinclaus.Day
 
-class Day3: Day {
+class Day3: Day<Long> {
     override val name: String = "Mull It Over"
 
     companion object {

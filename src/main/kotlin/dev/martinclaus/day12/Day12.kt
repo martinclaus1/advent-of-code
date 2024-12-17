@@ -4,7 +4,7 @@ import dev.martinclaus.Day
 import dev.martinclaus.utils.Grid
 import dev.martinclaus.utils.Point
 
-class Day12: Day {
+class Day12: Day<Long> {
     override val name = "Garden Groups"
 
     companion object {

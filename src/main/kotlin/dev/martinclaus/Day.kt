@@ -1,7 +1,7 @@
 package dev.martinclaus
 
-interface Day {
+interface Day<T> {
     val name: String
-    fun partI(input: String): Long
-    fun partII(input: String): Long
+    fun partI(input: String): T
+    fun partII(input: String): T
 }

@@ -3,7 +3,7 @@ package dev.martinclaus.day09
 import dev.martinclaus.Day
 import kotlin.math.min
 
-class Day9 : Day {
+class Day9 : Day<Long> {
     override val name = "dev.martinclaus.Day 9: Disk Fragmenter"
 
     companion object {

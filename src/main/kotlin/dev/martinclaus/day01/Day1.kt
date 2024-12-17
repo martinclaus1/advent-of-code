@@ -4,7 +4,7 @@ import dev.martinclaus.Day
 import kotlin.math.abs
 
 
-class Day1: Day {
+class Day1: Day<Long> {
     override val name: String = "Historian Hysteria"
 
     private val pattern = "\\d+".toRegex().toPattern()

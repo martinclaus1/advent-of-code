@@ -30,7 +30,7 @@ class Grid<T>(private val data: Map<Point, T>) : Collection<T> {
         }
     }
 
-    fun isHowManyCorners(p: Point) = (Direction.entries + Direction.entries.first()).zipWithNext()
+    fun isHowManyCorners(p: Point) = (Direction.CARDINALS + Direction.CARDINALS.first()).zipWithNext()
         .filter { (d1, d2) ->
             val a = get(p + d1)
             val b = get(p + d2)
@@ -67,6 +67,10 @@ enum class Direction {
     NORTH_WEST,
     SOUTH_EAST,
     SOUTH_WEST;
+
+    companion object {
+        val CARDINALS = listOf(NORTH, EAST, SOUTH, WEST)
+    }
 
     fun toPoint(): Point = when (this) {
         NORTH -> Point(0, -1)

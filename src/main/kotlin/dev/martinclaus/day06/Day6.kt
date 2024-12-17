@@ -8,7 +8,7 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withTimeoutOrNull
 
 
-class Day6 : Day {
+class Day6 : Day<Long> {
     override val name = "Guard Gallivant"
 
     companion object {

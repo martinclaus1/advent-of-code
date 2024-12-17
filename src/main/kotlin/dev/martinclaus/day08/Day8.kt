@@ -3,7 +3,7 @@ package dev.martinclaus.day08
 import dev.martinclaus.Day
 
 
-class Day8 : Day {
+class Day8 : Day<Long> {
     override val name = "Resonant Collinearity"
 
     companion object {

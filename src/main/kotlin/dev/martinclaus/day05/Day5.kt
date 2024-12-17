@@ -3,7 +3,7 @@ package dev.martinclaus.day05
 import dev.martinclaus.Day
 import java.util.Collections
 
-class Day5 : Day {
+class Day5 : Day<Long> {
     override val name = "Print Queue"
 
     companion object {
