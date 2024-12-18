@@ -1,6 +1,6 @@
 package dev.martinclaus.utils
 
-class Grid<T>(private val data: Map<Point, T>) : Collection<T> {
+class Grid<T>(private val data: MutableMap<Point, T>) : Collection<T> {
     override val size: Int
         get() = data.size
 
@@ -11,14 +11,17 @@ class Grid<T>(private val data: Map<Point, T>) : Collection<T> {
     override fun isEmpty(): Boolean = data.isEmpty()
     override fun iterator(): Iterator<T> = data.values.iterator()
 
-    fun getCardinalNeighborPositions(point: Point) = point.getCardinalNeighbours().filter { it in keys }
+    fun getCardinalNeighborPositions(point: Point) = point.getCardinalNeighbors().filter { it in keys }
 
-    fun islandPerimeter(point: Point): Int = point.getCardinalNeighbours().filter { this[it] != this[point] }.size
+    fun islandPerimeter(point: Point): Int = point.getCardinalNeighbors().filter { this[it] != this[point] }.size
 
     val keys: Set<Point>
         get() = data.keys
 
     operator fun get(key: Point): T? = data[key]
+    operator fun set(key: Point, value: T) {
+        data[key] = value
+    }
 
     companion object {
         fun <T> of(rows: List<List<T>>): Grid<T> {
@@ -26,7 +29,7 @@ class Grid<T>(private val data: Map<Point, T>) : Collection<T> {
                 row.mapIndexed { x, value -> Point(x, y) to value }
             }.toMap()
 
-            return Grid(data)
+            return Grid(data.toMutableMap())
         }
     }
 
@@ -37,6 +40,12 @@ class Grid<T>(private val data: Map<Point, T>) : Collection<T> {
             val c = get(p)
             (a != c && b != c) || (a == c && b == c && get(p + d1 + d2) != c)
         }.size
+
+    override fun toString(): String {
+        return data.entries.groupBy { it.key.y }
+            .map { (_, row) -> row.sortedBy { it.key.x }.joinToString("") { it.value.toString() } }
+            .joinToString("\n")
+    }
 }
 
 
@@ -54,8 +63,12 @@ data class Point(val x: Int, val y: Int) {
     operator fun plus(other: Direction): Point = this + other.toPoint()
     operator fun plus(other: Point) = Point(x + other.x, y + other.y)
 
-    fun getCardinalNeighbours(): List<Point> = listOf(north, east, south, west)
-    fun getNeighbours(): List<Point> = getCardinalNeighbours() + listOf(northEast, northWest, southEast, southWest)
+    fun getCardinalNeighbors(): List<Point> = listOf(north, east, south, west)
+    fun getNeighbours(): List<Point> = getCardinalNeighbors() + listOf(northEast, northWest, southEast, southWest)
+
+    companion object {
+        fun of(input: String) = input.split(",").let { Point(it[0].trim().toInt(), it[1].trim().toInt()) }
+    }
 }
 
 enum class Direction {
