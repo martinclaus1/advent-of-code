@@ -7,39 +7,27 @@ import kotlin.math.abs
 class Day1: Day<Long> {
     override val name: String = "Historian Hysteria"
 
-    private val pattern = "\\d+".toRegex().toPattern()
-
     companion object {
         const val INPUT_FILE = "day01.txt"
     }
 
     override fun partI(input: String): Long {
-        val lines = input.lines().filter { it.isNotBlank() }
-        val lists = lines.mapNotNull {
-            val results = pattern.matcher(it).results().map { it.group() }.toList()
-            if (results.size == 2) {
-                results[0].toInt() to results[1].toInt()
-            } else null
-        }
-
-        val first = lists.map { it.first }.sorted()
-        val second = lists.map { it.second }.sorted()
-
-        return first.zip(second).sumOf { (a, b) -> abs(b-a) }.toLong()
+        val (firsts, seconds) = input.pairs()
+        return firsts.sorted().zip(seconds.sorted()).sumOf { (a, b) -> abs(b-a) }.toLong()
     }
 
     override fun partII(input: String): Long {
-        val lines = input.lines().filter { it.isNotBlank() }
-        val lists = lines.mapNotNull {
-            val results = pattern.matcher(it).results().map { it.group() }.toList()
-            if (results.size == 2) {
-                results[0].toInt() to results[1].toInt()
-            } else null
+        val (firsts, seconds) = input.pairs()
+        val mappedSeconds = seconds.groupBy { it }.mapValues { it.value.size }
+        return firsts.sumOf { it * (mappedSeconds[it]?:0) }.toLong()
+    }
+
+    private fun String.pairs(): Pair<List<Int>, List<Int>> {
+        val lines = lines().dropLastWhile { it.isBlank() }
+        val lists = lines.map {
+            val (first, second) = it.split("   ").map { it.toInt() }
+            first to second
         }
-
-        val first = lists.map { it.first }
-        val second = lists.map { it.second }.groupBy { it }.mapValues { it.value.size }
-
-        return first.sumOf { it * (second[it]?:0) }.toLong()
+        return lists.map { it.first } to lists.map { it.second }
     }
 }
