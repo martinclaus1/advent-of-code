@@ -1,6 +1,7 @@
 package dev.martinclaus.day08
 
 import dev.martinclaus.Day
+import dev.martinclaus.safeLines
 
 
 class Day8 : Day<Long> {
@@ -11,7 +12,7 @@ class Day8 : Day<Long> {
     }
 
     override fun partI(input: String): Long {
-        val lines = input.lines().filter { it.isNotBlank() }
+        val lines = input.safeLines()
         val antennas = lines.asAntennas()
 
         val result = antennas.flatMap { (_, points) ->
@@ -25,7 +26,7 @@ class Day8 : Day<Long> {
     }
 
     override fun partII(input: String): Long {
-        val lines = input.lines().filter { it.isNotBlank() }
+        val lines = input.safeLines()
 
         val antennas = lines.asAntennas()
 
@@ -40,8 +41,8 @@ class Day8 : Day<Long> {
     }
 
     private fun List<String>.asAntennas(): Map<Char, List<Point>> = flatMapIndexed { y, line ->
-        line.mapIndexed { index, c -> c to Point(index, y) }
-    }.groupBy { (key, _) -> key }
+        line.mapIndexed { index, c -> c to Point(index, y) } }
+        .groupBy { (key, _) -> key }
         .mapValues { (_, value) -> value.map { it.second } }
         .filterKeys { it.isLetterOrDigit() }
 

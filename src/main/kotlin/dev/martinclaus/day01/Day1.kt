@@ -1,6 +1,7 @@
 package dev.martinclaus.day01
 
 import dev.martinclaus.Day
+import dev.martinclaus.safeLines
 import kotlin.math.abs
 
 
@@ -23,9 +24,8 @@ class Day1: Day<Long> {
     }
 
     private fun String.pairs(): Pair<List<Int>, List<Int>> {
-        val lines = lines().dropLastWhile { it.isBlank() }
-        val lists = lines.map {
-            val (first, second) = it.split("   ").map { it.toInt() }
+        val lists = safeLines().map { line ->
+            val (first, second) = line.split("   ").map { match -> match.toInt() }
             first to second
         }
         return lists.map { it.first } to lists.map { it.second }

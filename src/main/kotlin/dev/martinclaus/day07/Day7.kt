@@ -1,6 +1,7 @@
 package dev.martinclaus.day07
 
 import dev.martinclaus.Day
+import dev.martinclaus.safeLines
 
 class Day7: Day<Long> {
     override val name = "Bridge Repair"
@@ -10,7 +11,7 @@ class Day7: Day<Long> {
     }
 
     override fun partI(input: String): Long {
-        val lines = input.lines().filter { it.isNotBlank() }
+        val lines = input.safeLines()
         val rows = lines.map { line ->
             val (first, second) = line.split(":")
             val elements = second.trim().split(" ").map { it.toLong() }
@@ -30,7 +31,7 @@ class Day7: Day<Long> {
     }
 
     override fun partII(input: String): Long {
-        val lines = input.lines().filter { it.isNotBlank() }
+        val lines = input.safeLines()
         val rows = lines.map { line ->
             val (first, second) = line.split(":")
             val elements = second.trim().split(" ").map { it.toLong() }

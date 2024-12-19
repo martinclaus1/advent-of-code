@@ -1,6 +1,7 @@
 package dev.martinclaus.day10
 
 import dev.martinclaus.Day
+import dev.martinclaus.safeLines
 import dev.martinclaus.utils.Grid
 import dev.martinclaus.utils.Point
 
@@ -12,7 +13,7 @@ class Day10 : Day<Long> {
     }
 
     override fun partI(input: String): Long {
-        val grid = Grid.of(input.lines().dropLastWhile { it.isBlank() }.map { it.map { c -> c.digitToInt() } })
+        val grid = Grid.of(input.safeLines().map { it.map { c -> c.digitToInt() } })
         val starts = grid.keys.filter { grid[it] == 0 }
 
         return starts.sumOf { point ->
@@ -32,7 +33,7 @@ class Day10 : Day<Long> {
     }
 
     override fun partII(input: String): Long {
-        val grid = Grid.of(input.lines().dropLastWhile { it.isBlank() }.map { it.map { c -> c.digitToInt() } })
+        val grid = Grid.of(input.safeLines().map { it.map { c -> c.digitToInt() } })
         val starts = grid.keys.filter { grid[it] == 0 }
 
         return starts.sumOf { point ->

@@ -1,5 +1,6 @@
 package dev.martinclaus.day18
 
+import dev.martinclaus.safeLines
 import dev.martinclaus.utils.Point
 
 class Day18 {
@@ -8,13 +9,13 @@ class Day18 {
     }
 
     fun partI(input: String, end: Int, offset: Int): Int {
-        val points = input.lines().dropLastWhile { it.isBlank() }.map { Point.of(it) }
+        val points = input.safeLines().map { Point.of(it) }
 
         return solve(points.take(offset).toSet(), end) ?: 0
     }
 
     fun partII(input: String, end: Int, offset: Int): String {
-        val lines = input.lines().dropLastWhile { it.isBlank() }
+        val lines = input.safeLines()
         val points = lines.map { Point.of(it) }
 
         var max = lines.size

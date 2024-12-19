@@ -1,6 +1,6 @@
 package dev.martinclaus.day06
 
-import dev.martinclaus.dev.martinclaus.readText
+import dev.martinclaus.readText
 import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.extension.ExtensionContext
 import org.junit.jupiter.params.ParameterizedTest

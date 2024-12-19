@@ -1,6 +1,6 @@
 package dev.martinclaus.day10
 
-import dev.martinclaus.dev.martinclaus.readText
+import dev.martinclaus.readText
 import org.junit.jupiter.api.extension.ExtensionContext
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
@@ -30,14 +30,14 @@ class Day10Test {
     class PartIArgumentsProvider : ArgumentsProvider {
         override fun provideArguments(context: ExtensionContext): Stream<out Arguments>? = of(
             Arguments.of("""
-                89010123
-                78121874
-                87430965
-                96549874
-                45678903
-                32019012
-                01329801
-                10456732
+            89010123
+            78121874
+            87430965
+            96549874
+            45678903
+            32019012
+            01329801
+            10456732
             """.trimIndent(), 36),
             Arguments.of(Day10.INPUT_FILE.readText(), 468)
         )
@@ -46,14 +46,14 @@ class Day10Test {
     class PartIIArgumentsProvider : ArgumentsProvider {
         override fun provideArguments(context: ExtensionContext): Stream<out Arguments>? = of(
             Arguments.of("""
-                89010123
-                78121874
-                87430965
-                96549874
-                45678903
-                32019012
-                01329801
-                10456732
+            89010123
+            78121874
+            87430965
+            96549874
+            45678903
+            32019012
+            01329801
+            10456732
             """.trimIndent(), 81),
             Arguments.of(Day10.INPUT_FILE.readText(), 966)
         )

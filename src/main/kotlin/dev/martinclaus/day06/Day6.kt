@@ -1,6 +1,7 @@
 package dev.martinclaus.day06
 
 import dev.martinclaus.Day
+import dev.martinclaus.safeLines
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -16,12 +17,12 @@ class Day6 : Day<Long> {
     }
 
     override fun partI(input: String): Long {
-        val lines = input.lines().map { it.toList() }
+        val lines = input.safeLines().map { it.toList() }
         return getVisitedCount(lines)?.toLong() ?: 0
     }
 
     override fun partII(input: String): Long = runBlocking {
-        val lines = input.lines().map { it.toList() }
+        val lines = input.safeLines().map { it.toList() }
 
         val deferredResults = lines.mapIndexed { y, row ->
             List(row.size) { x ->

@@ -1,6 +1,7 @@
 package dev.martinclaus.day04
 
 import dev.martinclaus.Day
+import dev.martinclaus.safeLines
 
 class Day4 : Day<Long> {
     override val name: String = "Ceres Search"
@@ -10,7 +11,7 @@ class Day4 : Day<Long> {
     }
 
     override fun partI(input: String): Long {
-        val grid = input.lines().filter { it.isNotBlank() }
+        val grid = input.safeLines()
         val word = "XMAS"
         val directions = listOf(
             Pair(0, 1),   // Right
@@ -45,7 +46,7 @@ class Day4 : Day<Long> {
     }
 
     override fun partII(input: String): Long {
-        val grid = input.lines().filter { it.isNotBlank() }
+        val grid = input.safeLines()
         val directions = listOf(
             Direction.UP_LEFT,
             Direction.DOWN_RIGHT,

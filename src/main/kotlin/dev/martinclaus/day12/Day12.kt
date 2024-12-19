@@ -1,6 +1,7 @@
 package dev.martinclaus.day12
 
 import dev.martinclaus.Day
+import dev.martinclaus.safeLines
 import dev.martinclaus.utils.Grid
 import dev.martinclaus.utils.Point
 
@@ -20,7 +21,7 @@ class Day12: Day<Long> {
     }
 
     private fun solve(input: String, calculator: (Grid<Char>, Point) -> Int): Long {
-        val grid = Grid.of(input.lines().map { it.toList() })
+        val grid = Grid.of(input.safeLines().map { it.toList() })
         val visited = HashSet<Point>()
 
         return grid.keys.sumOf { point ->

@@ -1,6 +1,6 @@
 package dev.martinclaus.day04
 
-import dev.martinclaus.dev.martinclaus.readText
+import dev.martinclaus.readText
 import org.junit.jupiter.api.extension.ExtensionContext
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
@@ -32,16 +32,16 @@ class Day4Test {
         override fun provideArguments(context: ExtensionContext): Stream<out Arguments>? = of(
             Arguments.of(
                 """
-                    MMMSXXMASM
-                    MSAMXMSMSA
-                    AMXSXMAAMM
-                    MSAMASMSMX
-                    XMASAMXAMM
-                    XXAMMXXAMA
-                    SMSMSASXSS
-                    SAXAMASAAA
-                    MAMMMXMMMM
-                    MXMXAXMASX
+                MMMSXXMASM
+                MSAMXMSMSA
+                AMXSXMAAMM
+                MSAMASMSMX
+                XMASAMXAMM
+                XXAMMXXAMA
+                SMSMSASXSS
+                SAXAMASAAA
+                MAMMMXMMMM
+                MXMXAXMASX
                 """.trimIndent(),
                 18
             ),
@@ -53,16 +53,16 @@ class Day4Test {
         override fun provideArguments(context: ExtensionContext): Stream<out Arguments>? = of(
             Arguments.of(
                 """
-                    MMMSXXMASM
-                    MSAMXMSMSA
-                    AMXSXMAAMM
-                    MSAMASMSMX
-                    XMASAMXAMM
-                    XXAMMXXAMA
-                    SMSMSASXSS
-                    SAXAMASAAA
-                    MAMMMXMMMM
-                    MXMXAXMASX
+                MMMSXXMASM
+                MSAMXMSMSA
+                AMXSXMAAMM
+                MSAMASMSMX
+                XMASAMXAMM
+                XXAMMXXAMA
+                SMSMSASXSS
+                SAXAMASAAA
+                MAMMMXMMMM
+                MXMXAXMASX
                 """.trimIndent(),
                 9
             ),
