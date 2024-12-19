@@ -85,6 +85,34 @@ enum class Direction {
         val CARDINALS = listOf(NORTH, EAST, SOUTH, WEST)
     }
 
+    operator fun plus(other: Direction): Direction = when (this) {
+        NORTH -> when (other) {
+            EAST -> EAST
+            WEST -> WEST
+            SOUTH -> SOUTH
+            else -> NORTH
+        }
+        EAST -> when (other) {
+            EAST -> SOUTH
+            NORTH -> EAST
+            SOUTH -> WEST
+            else -> EAST
+        }
+        SOUTH -> when (other) {
+            EAST -> WEST
+            WEST -> EAST
+            NORTH -> NORTH
+            else -> SOUTH
+        }
+        WEST -> when (other) {
+            EAST -> NORTH
+            WEST -> SOUTH
+            SOUTH -> EAST
+            else -> WEST
+        }
+        else -> this
+    }
+
     fun toPoint(): Point = when (this) {
         NORTH -> Point(0, -1)
         EAST -> Point(1, 0)
