@@ -1,16 +1,13 @@
 package dev.martinclaus.day09
 
-import dev.martinclaus.Day
 import kotlin.math.min
 
-class Day9 : Day<Long> {
-    override val name = "dev.martinclaus.Day 9: Disk Fragmenter"
+/**
+ * --- Day 9: Disk Fragmenter ---
+ */
+class Day9 {
 
-    companion object {
-        const val INPUT_FILE = "day09.txt"
-    }
-
-    override fun partI(input: String): Long {
+    fun partI(input: String): Long {
         val blocks = readBlocks(input)
 
         var reverseIndex = blocks.size - 1
@@ -53,7 +50,7 @@ class Day9 : Day<Long> {
         return checksum
     }
 
-    override fun partII(input: String): Long {
+    fun partII(input: String): Long {
         val blocks = readBlocks(input)
 
         var checksum = 0L

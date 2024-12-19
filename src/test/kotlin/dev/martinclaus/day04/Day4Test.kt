@@ -1,6 +1,7 @@
 package dev.martinclaus.day04
 
 import dev.martinclaus.readText
+import dev.martinclaus.toFilename
 import org.junit.jupiter.api.extension.ExtensionContext
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
@@ -45,7 +46,7 @@ class Day4Test {
                 """.trimIndent(),
                 18
             ),
-            Arguments.of(Day4.INPUT_FILE.readText(), 2493)
+            Arguments.of(4.toFilename().readText(), 2493)
         )
     }
 
@@ -66,7 +67,7 @@ class Day4Test {
                 """.trimIndent(),
                 9
             ),
-            Arguments.of(Day4.INPUT_FILE.readText(), 1890)
+            Arguments.of(4.toFilename().readText(), 1890)
         )
     }
 }

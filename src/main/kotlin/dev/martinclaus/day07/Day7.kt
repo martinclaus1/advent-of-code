@@ -1,16 +1,13 @@
 package dev.martinclaus.day07
 
-import dev.martinclaus.Day
 import dev.martinclaus.safeLines
 
-class Day7: Day<Long> {
-    override val name = "Bridge Repair"
+/**
+ * --- Day 7: Bridge Repair ---
+ */
+class Day7 {
 
-    companion object {
-        const val INPUT_FILE = "day07.txt"
-    }
-
-    override fun partI(input: String): Long {
+    fun partI(input: String): Long {
         val lines = input.safeLines()
         val rows = lines.map { line ->
             val (first, second) = line.split(":")
@@ -30,7 +27,7 @@ class Day7: Day<Long> {
         return result
     }
 
-    override fun partII(input: String): Long {
+    fun partII(input: String): Long {
         val lines = input.safeLines()
         val rows = lines.map { line ->
             val (first, second) = line.split(":")

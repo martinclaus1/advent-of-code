@@ -1,18 +1,15 @@
 package dev.martinclaus.day10
 
-import dev.martinclaus.Day
 import dev.martinclaus.safeLines
 import dev.martinclaus.utils.Grid
 import dev.martinclaus.utils.Point
 
-class Day10 : Day<Long> {
-    override val name: String = "Hoof It"
+/**
+ * --- Day 10: Hoof It ---
+ */
+class Day10 {
 
-    companion object {
-        const val INPUT_FILE = "day10.txt"
-    }
-
-    override fun partI(input: String): Long {
+    fun partI(input: String): Long {
         val grid = Grid.of(input.safeLines().map { it.map { c -> c.digitToInt() } })
         val starts = grid.keys.filter { grid[it] == 0 }
 
@@ -32,7 +29,7 @@ class Day10 : Day<Long> {
         }.toLong()
     }
 
-    override fun partII(input: String): Long {
+    fun partII(input: String): Long {
         val grid = Grid.of(input.safeLines().map { it.map { c -> c.digitToInt() } })
         val starts = grid.keys.filter { grid[it] == 0 }
 

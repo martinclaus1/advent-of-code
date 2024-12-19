@@ -1,16 +1,13 @@
 package dev.martinclaus.day05
 
-import dev.martinclaus.Day
 import java.util.Collections
 
-class Day5 : Day<Long> {
-    override val name = "Print Queue"
+/**
+ * --- Day 5: Print Queue ---
+ */
+class Day5 {
 
-    companion object {
-        const val INPUT_FILE = "day05.txt"
-    }
-
-    override fun partI(input: String): Long {
+    fun partI(input: String): Long {
         val (rawRules, rawUpdates) = input.split("(\\h*\\n){2,}".toRegex())
         val (before, after) = getRules(rawRules)
         val updates = getUpdates(rawUpdates)
@@ -24,7 +21,7 @@ class Day5 : Day<Long> {
         }.toLong()
     }
 
-    override fun partII(input: String): Long {
+    fun partII(input: String): Long {
         val (rawRules, rawUpdates) = input.split("(\\h*\\n){2,}".toRegex())
         val (before, after) = getRules(rawRules)
         val invalidUpdates = getUpdates(rawUpdates).filterNot { isValidUpdate(before, after, it) }

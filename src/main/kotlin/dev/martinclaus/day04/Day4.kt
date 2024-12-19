@@ -1,16 +1,14 @@
 package dev.martinclaus.day04
 
-import dev.martinclaus.Day
 import dev.martinclaus.safeLines
 
-class Day4 : Day<Long> {
-    override val name: String = "Ceres Search"
+/**
+ * --- Day 4: Ceres Search ---
+ */
+class Day4 {
 
-    companion object {
-        const val INPUT_FILE = "day04.txt"
-    }
-
-    override fun partI(input: String): Long {
+    // todo: refactor
+    fun partI(input: String): Long {
         val grid = input.safeLines()
         val word = "XMAS"
         val directions = listOf(
@@ -45,7 +43,8 @@ class Day4 : Day<Long> {
         return count.toLong()
     }
 
-    override fun partII(input: String): Long {
+    // todo: refactor
+    fun partII(input: String): Long {
         val grid = input.safeLines()
         val directions = listOf(
             Direction.UP_LEFT,

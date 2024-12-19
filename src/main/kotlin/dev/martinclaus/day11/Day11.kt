@@ -1,20 +1,21 @@
 package dev.martinclaus.day11
 
-import dev.martinclaus.Day
+/**
+ * --- Day 11: Plutonian Pebbles ---
+ */
+class Day11 {
 
-class Day11 : Day<Long> {
-    override val name = "Plutonian Pebbles"
+    private val cache = HashMap<Pair<Int, Long>, Long>()
 
-    companion object {
-        const val INPUT_FILE = "day11.txt"
-    }
-
-    override fun partI(input: String): Long {
+    fun partI(input: String): Long {
         val arrangement = input.split(" ").map { it.trim().toLong() }
         return arrangement.fold(0L) { acc, n -> acc + calculateChanges(n, 0, 25) }
     }
+    fun partII(input: String): Long {
+        val arrangement = input.split(" ").map { it.trim().toLong() }
+        return arrangement.fold(0L) { acc, n -> acc + calculateChanges(n, 0, 75) }
+    }
 
-    private val cache = HashMap<Pair<Int, Long>, Long>()
     private fun calculateChanges(stone: Long, blink: Int, maxBlinks: Int): Long {
         if (blink == maxBlinks) return 1
         cache[blink to stone]?.let { return it }
@@ -31,10 +32,5 @@ class Day11 : Day<Long> {
         }
 
         return cache[blink to stone]!!
-    }
-
-    override fun partII(input: String): Long {
-        val arrangement = input.split(" ").map { it.trim().toLong() }
-        return arrangement.fold(0L) { acc, n -> acc + calculateChanges(n, 0, 75) }
     }
 }

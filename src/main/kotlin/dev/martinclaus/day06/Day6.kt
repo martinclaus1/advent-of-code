@@ -1,27 +1,25 @@
 package dev.martinclaus.day06
 
-import dev.martinclaus.Day
 import dev.martinclaus.safeLines
+import dev.martinclaus.utils.Direction
+import dev.martinclaus.utils.Point
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withTimeoutOrNull
 
+/**
+ * --- Day 6: Guard Gallivant ---
+ */
+class Day6 {
 
-class Day6 : Day<Long> {
-    override val name = "Guard Gallivant"
-
-    companion object {
-        const val INPUT_FILE = "day06.txt"
-    }
-
-    override fun partI(input: String): Long {
+    fun partI(input: String): Long {
         val lines = input.safeLines().map { it.toList() }
         return getVisitedCount(lines)?.toLong() ?: 0
     }
 
-    override fun partII(input: String): Long = runBlocking {
+    fun partII(input: String): Long = runBlocking {
         val lines = input.safeLines().map { it.toList() }
 
         val deferredResults = lines.mapIndexed { y, row ->
@@ -41,7 +39,7 @@ class Day6 : Day<Long> {
 
         tailrec fun explore(next: Point, currentDirection: Direction, visited: MutableSet<Point>, obstacleCount: Int): Int? {
             if (obstacleCount == 3) return null
-            val candidate = Point(next.x + currentDirection.x, next.y + currentDirection.y)
+            val candidate = next + currentDirection
             val element = lines.get(candidate) ?: return visited.size
 
             return if (element != '#' && element != 'O') {
@@ -49,18 +47,19 @@ class Day6 : Day<Long> {
                 explore(candidate, currentDirection, visited, obstacleCount)
             } else {
                 val newDirection = when (currentDirection) {
-                    Direction.RIGHT -> Direction.DOWN
-                    Direction.DOWN -> Direction.LEFT
-                    Direction.LEFT -> Direction.UP
-                    Direction.UP -> Direction.RIGHT
+                    Direction.EAST -> Direction.SOUTH
+                    Direction.SOUTH -> Direction.WEST
+                    Direction.WEST -> Direction.NORTH
+                    Direction.NORTH -> Direction.EAST
+                    else -> throw IllegalArgumentException("Invalid direction")
                 }
-                explore(next, newDirection, visited, if(element == 'O') obstacleCount + 1 else obstacleCount)
+                explore(next, newDirection, visited, if (element == 'O') obstacleCount + 1 else obstacleCount)
             }
         }
 
         val start = getStart(lines)
         val visited = mutableSetOf(start)
-        return explore(start, Direction.UP, visited, 0)
+        return explore(start, Direction.NORTH, visited, 0)
     }
 
     private fun List<List<Char>>.get(point: Point) = try {
@@ -83,13 +82,4 @@ class Day6 : Day<Long> {
             if (x == point.x && y == point.y && this[y][x] != '^') value else c
         }
     }
-}
-
-data class Point(val x: Int, val y: Int)
-
-enum class Direction(val y: Int, val x: Int) {
-    DOWN(1, 0),
-    UP(-1, 0),
-    LEFT(0, -1),
-    RIGHT(0, 1),
 }

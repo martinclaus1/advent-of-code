@@ -1,6 +1,7 @@
 package dev.martinclaus.day13
 
 import dev.martinclaus.readText
+import dev.martinclaus.toFilename
 import org.junit.jupiter.api.extension.ExtensionContext
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
@@ -46,7 +47,7 @@ class Day13Test {
             Button B: X+27, Y+71
             Prize: X=18641, Y=10279
             """.trimIndent(), 480),
-            Arguments.of(Day13.INPUT_FILE.readText(), 33427)
+            Arguments.of(13.toFilename().readText(), 33427)
         )
     }
 
@@ -69,7 +70,7 @@ class Day13Test {
             Button B: X+27, Y+71
             Prize: X=18641, Y=10279
             """.trimIndent(), 875318608908),
-            Arguments.of(Day13.INPUT_FILE.readText(), 91649162972270)
+            Arguments.of(13.toFilename().readText(), 91649162972270)
         )
     }
 }

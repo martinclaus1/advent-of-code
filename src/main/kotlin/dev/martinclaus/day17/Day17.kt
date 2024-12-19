@@ -1,23 +1,18 @@
 package dev.martinclaus.day17
 
-import dev.martinclaus.Day
-
-class Day17 : Day<String> {
-    override val name = "Chronospatial Computer"
-
-    companion object {
-        const val INPUT_FILE = "day17.txt"
-    }
-
+/**
+ * --- Day 17: Chronospatial Computer ---
+ */
+class Day17 {
     private val pattern = "\\d+".toRegex().toPattern()
 
-    override fun partI(input: String): String {
+    fun partI(input: String): String {
         val (register, program) = getParsedPuzzle(input)
 
         return Machine(register.first, register.second, register.third).run(program).joinToString(",")
     }
 
-    override fun partII(input: String): String {
+    fun partII(input: String): String {
         val (_, program) = getParsedPuzzle(input)
 
         return findA(program, program).toString()

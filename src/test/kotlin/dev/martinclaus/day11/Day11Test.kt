@@ -1,6 +1,7 @@
 package dev.martinclaus.day11
 
 import dev.martinclaus.readText
+import dev.martinclaus.toFilename
 import org.junit.jupiter.api.extension.ExtensionContext
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
@@ -30,14 +31,14 @@ class Day11Test {
     class PartIArgumentsProvider : ArgumentsProvider {
         override fun provideArguments(context: ExtensionContext): Stream<out Arguments>? = of(
             Arguments.of("125 17", 55312),
-            Arguments.of(Day11.INPUT_FILE.readText(), 203457)
+            Arguments.of(11.toFilename().readText(), 203457)
         )
     }
 
     class PartIIArgumentsProvider : ArgumentsProvider {
         override fun provideArguments(context: ExtensionContext): Stream<out Arguments>? = of(
             Arguments.of("125 17", 65601038650482),
-            Arguments.of(Day11.INPUT_FILE.readText(), 241394363462435)
+            Arguments.of(11.toFilename().readText(), 241394363462435)
         )
     }
 }

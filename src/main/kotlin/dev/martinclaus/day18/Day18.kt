@@ -3,10 +3,10 @@ package dev.martinclaus.day18
 import dev.martinclaus.safeLines
 import dev.martinclaus.utils.Point
 
+/**
+ * --- Day 18: RAM Run ---
+ */
 class Day18 {
-    companion object {
-        const val INPUT_FILE = "day18.txt"
-    }
 
     fun partI(input: String, end: Int, offset: Int): Int {
         val points = input.safeLines().map { Point.of(it) }

@@ -1,6 +1,7 @@
 package dev.martinclaus.day18
 
 import dev.martinclaus.readText
+import dev.martinclaus.toFilename
 import org.junit.jupiter.api.extension.ExtensionContext
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
@@ -30,15 +31,15 @@ class Day18Test {
 
     class PartIArgumentsProvider : ArgumentsProvider {
         override fun provideArguments(context: ExtensionContext): Stream<out Arguments>? = of(
-            Arguments.of(input.trimIndent(), 6, 12, 22),
-            Arguments.of(Day18.INPUT_FILE.readText(), 70, 1024, 232)
+            Arguments.of(input, 6, 12, 22),
+            Arguments.of(18.toFilename().readText(), 70, 1024, 232)
         )
     }
 
     class PartIIArgumentsProvider : ArgumentsProvider {
         override fun provideArguments(context: ExtensionContext): Stream<out Arguments>? = of(
-            Arguments.of(input.trimIndent(), 6, 0, "Point(x=6, y=1)"),
-            Arguments.of(Day18.INPUT_FILE.readText(), 70, 1024, "Point(x=44, y=64)")
+            Arguments.of(input, 6, 0, "Point(x=6, y=1)"),
+            Arguments.of(18.toFilename().readText(), 70, 1024, "Point(x=44, y=64)")
         )
     }
 }

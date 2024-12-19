@@ -1,17 +1,13 @@
 package dev.martinclaus.day08
 
-import dev.martinclaus.Day
 import dev.martinclaus.safeLines
 
+/**
+ * --- Day 8: Resonant Collinearity ---
+ */
+class Day8 {
 
-class Day8 : Day<Long> {
-    override val name = "Resonant Collinearity"
-
-    companion object {
-        const val INPUT_FILE = "day08.txt"
-    }
-
-    override fun partI(input: String): Long {
+    fun partI(input: String): Long {
         val lines = input.safeLines()
         val antennas = lines.asAntennas()
 
@@ -25,7 +21,7 @@ class Day8 : Day<Long> {
         return result.toSet().size.toLong()
     }
 
-    override fun partII(input: String): Long {
+    fun partII(input: String): Long {
         val lines = input.safeLines()
 
         val antennas = lines.asAntennas()

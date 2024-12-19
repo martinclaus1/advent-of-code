@@ -1,25 +1,22 @@
 package dev.martinclaus.day02
 
-import dev.martinclaus.Day
 import dev.martinclaus.safeLines
 
-class Day2 : Day<Long> {
-    override val name: String = "Red Nosed Reports"
-
-    companion object {
-        const val INPUT_FILE = "day02.txt"
-    }
-
+/**
+ * --- Day 2: Red Nosed Reports ---
+ */
+class Day2 {
     private val pattern = "\\d+".toRegex().toPattern()
 
-    override fun partI(input: String): Long {
+    fun partI(input: String): Long {
         val lines = input.safeLines()
             .map { pattern.matcher(it).results().map { i -> i.group().toInt() }.toList() }
         return lines.count {
             isSafe(it)
         }.toLong()
     }
-    override fun partII(input: String): Long {
+
+    fun partII(input: String): Long {
         val lines = input.safeLines()
             .map { pattern.matcher(it).results().map { i -> i.group().toInt() }.toList() }
         return lines.count { levels ->

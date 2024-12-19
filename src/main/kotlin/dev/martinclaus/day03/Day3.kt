@@ -1,21 +1,18 @@
 package dev.martinclaus.day03
 
-import dev.martinclaus.Day
+/**
+ * --- Day 3: Mull It Over ---
+ */
+class Day3 {
 
-class Day3: Day<Long> {
-    override val name: String = "Mull It Over"
-
-    companion object {
-        const val INPUT_FILE = "day03.txt"
-    }
-
-    override fun partI(input: String): Long {
+    fun partI(input: String): Long {
         val pattern = "mul\\((\\d+),(\\d+)\\)".toRegex().toPattern()
 
-        return pattern.matcher(input).results().map { it.group(1).toInt() * it.group(2).toInt() }.toList().sum().toLong()
+        return pattern.matcher(input).results().map { it.group(1).toInt() * it.group(2).toInt() }.toList().sum()
+            .toLong()
     }
 
-    override fun partII(input: String): Long {
+    fun partII(input: String): Long {
         val pattern = Regex("mul\\((\\d+),(\\d+)\\)|do\\(\\)|don't\\(\\)")
         val group = pattern.findAll(input).map { match ->
             when {
@@ -23,6 +20,7 @@ class Day3: Day<Long> {
                     val (a, b) = match.destructured
                     Match.Mul(match.range.first, a.toInt() * b.toInt())
                 }
+
                 match.value == "do()" -> Match.Do(match.range.first)
                 match.value == "don't()" -> Match.Dont(match.range.first)
                 else -> throw IllegalArgumentException("Unexpected match: ${match.value}")
@@ -37,6 +35,7 @@ class Day3: Day<Long> {
                     apply = true
                     0
                 }
+
                 is Match.Dont -> {
                     apply = false
                     0

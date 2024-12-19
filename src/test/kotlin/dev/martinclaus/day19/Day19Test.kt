@@ -1,5 +1,6 @@
-package dev.martinclaus.day12
+package dev.martinclaus.day19
 
+import dev.martinclaus.day18.Day18
 import dev.martinclaus.readText
 import dev.martinclaus.toFilename
 import org.junit.jupiter.api.extension.ExtensionContext
@@ -11,8 +12,8 @@ import java.util.stream.Stream
 import java.util.stream.Stream.of
 import kotlin.test.assertEquals
 
-class Day12Test {
-    private val sut = Day12()
+class Day19Test {
+    private val sut = Day19()
 
     @ParameterizedTest
     @ArgumentsSource(PartIArgumentsProvider::class)
@@ -31,36 +32,36 @@ class Day12Test {
     class PartIArgumentsProvider : ArgumentsProvider {
         override fun provideArguments(context: ExtensionContext): Stream<out Arguments>? = of(
             Arguments.of("""
-            RRRRIICCFF
-            RRRRIICCCF
-            VVRRRCCFFF
-            VVRCCCJFFF
-            VVVVCJJCFE
-            VVIVCCJJEE
-            VVIIICJJEE
-            MIIIIIJJEE
-            MIIISIJEEE
-            MMMISSJEEE
-            """.trimIndent(), 1930),
-            Arguments.of(12.toFilename().readText(), 1465112)
+            r, wr, b, g, bwu, rb, gb, br
+
+            brwrr
+            bggr
+            gbbr
+            rrbgbr
+            ubwu
+            bwurrg
+            brgr
+            bbrgwb
+            """.trimIndent(), 6),
+            Arguments.of(19.toFilename().readText(), 350)
         )
     }
 
     class PartIIArgumentsProvider : ArgumentsProvider {
         override fun provideArguments(context: ExtensionContext): Stream<out Arguments>? = of(
             Arguments.of("""
-            RRRRIICCFF
-            RRRRIICCCF
-            VVRRRCCFFF
-            VVRCCCJFFF
-            VVVVCJJCFE
-            VVIVCCJJEE
-            VVIIICJJEE
-            MIIIIIJJEE
-            MIIISIJEEE
-            MMMISSJEEE
-            """.trimIndent(), 1206),
-            Arguments.of(12.toFilename().readText(), 893790)
+            r, wr, b, g, bwu, rb, gb, br
+
+            brwrr
+            bggr
+            gbbr
+            rrbgbr
+            ubwu
+            bwurrg
+            brgr
+            bbrgwb
+            """.trimIndent(), 16),
+            Arguments.of(19.toFilename().readText(), 769668867512623)
         )
     }
 }

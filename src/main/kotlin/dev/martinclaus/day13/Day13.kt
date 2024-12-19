@@ -1,19 +1,18 @@
 package dev.martinclaus.day13
 
-import dev.martinclaus.Day
-
-class Day13 : Day<Long> {
-    override val name = "Claw Contraption"
+/**
+ * --- Day 13: Claw Contraption ---
+ */
+class Day13{
 
     companion object {
-        const val INPUT_FILE = "day13.txt"
         const val ADDEND = 10000000000000
     }
 
     private val buttonPattern = Regex("X\\+(\\d+), Y\\+(\\d+)").toPattern()
     private val pricePattern = Regex("X=(\\d+), Y=(\\d+)").toPattern()
 
-    override fun partI(input: String): Long {
+    fun partI(input: String): Long {
         return input.split("\n\n").sumOf { m ->
             val (a, b) = m.toButtons()
             val prize = m.toPrize()
@@ -21,7 +20,7 @@ class Day13 : Day<Long> {
         }
     }
 
-    override fun partII(input: String): Long {
+    fun partII(input: String): Long {
         return input.split("\n\n").sumOf { m ->
             val (a, b) = m.toButtons()
             val prize = m.toPrize(ADDEND)

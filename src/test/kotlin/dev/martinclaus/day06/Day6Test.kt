@@ -1,6 +1,7 @@
 package dev.martinclaus.day06
 
 import dev.martinclaus.readText
+import dev.martinclaus.toFilename
 import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.extension.ExtensionContext
 import org.junit.jupiter.params.ParameterizedTest
@@ -45,7 +46,7 @@ class Day6Test {
                 """.trimIndent(),
                 41
             ),
-            Arguments.of(Day6.INPUT_FILE.readText(), 4374)
+            Arguments.of(6.toFilename().readText(), 4374)
         )
     }
 
@@ -66,7 +67,7 @@ class Day6Test {
                 """.trimIndent(),
                 6
             ),
-            Arguments.of(Day6.INPUT_FILE.readText(), 1705)
+            Arguments.of(6.toFilename().readText(), 1705)
         )
     }
 }

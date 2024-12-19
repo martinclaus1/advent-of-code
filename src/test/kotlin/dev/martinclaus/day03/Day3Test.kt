@@ -1,6 +1,7 @@
 package dev.martinclaus.day03
 
 import dev.martinclaus.readText
+import dev.martinclaus.toFilename
 import org.junit.jupiter.api.extension.ExtensionContext
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
@@ -34,7 +35,7 @@ class Day3Test {
                 "xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))",
                 161
             ),
-            Arguments.of(Day3.INPUT_FILE.readText(), 155955228)
+            Arguments.of(3.toFilename().readText(), 155955228)
         )
     }
 
@@ -44,7 +45,7 @@ class Day3Test {
                 "xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))",
                 48
             ),
-            Arguments.of(Day3.INPUT_FILE.readText(), 100189366)
+            Arguments.of(3.toFilename().readText(), 100189366)
         )
     }
 }

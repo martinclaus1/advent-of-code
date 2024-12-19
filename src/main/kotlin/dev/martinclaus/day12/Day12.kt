@@ -1,22 +1,19 @@
 package dev.martinclaus.day12
 
-import dev.martinclaus.Day
 import dev.martinclaus.safeLines
 import dev.martinclaus.utils.Grid
 import dev.martinclaus.utils.Point
 
-class Day12: Day<Long> {
-    override val name = "Garden Groups"
+/**
+ * --- Day 12: Garden Groups ---
+ */
+class Day12 {
 
-    companion object {
-        const val INPUT_FILE = "day12.txt"
-    }
-
-    override fun partI(input: String): Long {
+    fun partI(input: String): Long {
         return solve(input, Grid<Char>::islandPerimeter)
     }
 
-    override fun partII(input: String): Long {
+    fun partII(input: String): Long {
         return solve(input, Grid<Char>::isHowManyCorners)
     }
 
