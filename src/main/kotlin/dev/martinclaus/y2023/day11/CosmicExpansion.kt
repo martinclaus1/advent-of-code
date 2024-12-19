@@ -3,9 +3,9 @@ package dev.martinclaus.y2023.day11
 import dev.martinclaus.printSolution
 import dev.martinclaus.readText
 import dev.martinclaus.safeLines
-import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
+import dev.martinclaus.utils.Point
 
 fun main() {
     val input = "2023/cosmic-expansion.txt".readText().safeLines()
@@ -48,12 +48,5 @@ private fun calculate(input: List<String>, galaxyFactor: Long = 1): Long {
 
 fun partII(input: List<String>, factor: Long = 1_000_000L - 1): Long {
     return calculate(input, factor)
-}
-
-data class Point(val x: Int, val y: Int) {
-    /**
-     * https://www.baeldung.com/cs/minimal-manhattan-distance
-     */
-    fun manhattanDistanceTo(other: Point) = abs(x - other.x) + abs(y - other.y)
 }
 

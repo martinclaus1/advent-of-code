@@ -1,5 +1,7 @@
 package dev.martinclaus.utils
 
+import kotlin.math.abs
+
 class Grid<T>(private val data: MutableMap<Point, T>) : Collection<T> {
     override val size: Int
         get() = data.size
@@ -65,6 +67,8 @@ data class Point(val x: Int, val y: Int) {
 
     fun getCardinalNeighbors(): List<Point> = listOf(north, east, south, west)
     fun getNeighbours(): List<Point> = getCardinalNeighbors() + listOf(northEast, northWest, southEast, southWest)
+
+    fun manhattanDistanceTo(other: Point) = abs(x - other.x) + abs(y - other.y)
 
     companion object {
         fun of(input: String) = input.split(",").let { Point(it[0].trim().toInt(), it[1].trim().toInt()) }
