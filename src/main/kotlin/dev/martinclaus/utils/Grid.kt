@@ -20,10 +20,16 @@ class Grid<T>(private val data: MutableMap<Point, T>) : Collection<T> {
     val keys: Set<Point>
         get() = data.keys
 
+    val entries get() = data.entries
+
     operator fun get(key: Point): T? = data[key]
+    operator fun get(value: T): Point? = data.entries.find { it.value == value }?.key
+
     operator fun set(key: Point, value: T) {
         data[key] = value
     }
+
+    fun clone() = Grid(data.toMutableMap())
 
     companion object {
         fun <T> of(rows: List<List<T>>): Grid<T> {

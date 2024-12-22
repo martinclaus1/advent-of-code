@@ -9,7 +9,7 @@ class Day17 {
     fun partI(input: String): String {
         val (register, program) = getParsedPuzzle(input)
 
-        return dev.martinclaus.y2024.day17.Machine(register.first, register.second, register.third).run(program).joinToString(",")
+        return Machine(register.first, register.second, register.third).run(program).joinToString(",")
     }
 
     fun partII(input: String): String {
@@ -33,7 +33,7 @@ class Day17 {
             8L * findA(program, target.subList(1, target.size))
         }
 
-        while (dev.martinclaus.y2024.day17.Machine(start, 0, 0).run(program) != target) {
+        while (Machine(start, 0, 0).run(program) != target) {
             start++
         }
 
