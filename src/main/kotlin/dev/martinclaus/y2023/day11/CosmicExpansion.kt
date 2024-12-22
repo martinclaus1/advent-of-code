@@ -3,9 +3,9 @@ package dev.martinclaus.y2023.day11
 import dev.martinclaus.printSolution
 import dev.martinclaus.readText
 import dev.martinclaus.safeLines
+import dev.martinclaus.utils.Point
 import kotlin.math.max
 import kotlin.math.min
-import dev.martinclaus.utils.Point
 
 fun main() {
     val input = "2023/cosmic-expansion.txt".readText().safeLines()

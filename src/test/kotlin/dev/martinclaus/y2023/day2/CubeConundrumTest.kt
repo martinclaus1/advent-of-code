@@ -12,10 +12,10 @@ import java.util.stream.Stream.of
 import kotlin.test.assertEquals
 
 class CubeConundrumTest {
-@ParameterizedTest
+    @ParameterizedTest
     @ArgumentsSource(PartIArgumentsProvider::class)
     fun `check part I`(input: List<String>, expected: Int) {
-        val actual = partI(input, ConundrumSet(12,13,14))
+        val actual = partI(input, ConundrumSet(12, 13, 14))
 
         assertEquals(expected, actual)
     }

@@ -31,7 +31,8 @@ class Day13Test {
 
     class PartIArgumentsProvider : ArgumentsProvider {
         override fun provideArguments(context: ExtensionContext): Stream<out Arguments>? = of(
-            Arguments.of("""
+            Arguments.of(
+                """
             Button A: X+94, Y+34
             Button B: X+22, Y+67
             Prize: X=8400, Y=5400
@@ -47,14 +48,16 @@ class Day13Test {
             Button A: X+69, Y+23
             Button B: X+27, Y+71
             Prize: X=18641, Y=10279
-            """.trimIndent(), 480),
+            """.trimIndent(), 480
+            ),
             Arguments.of(input.readText(), 33427)
         )
     }
 
     class PartIIArgumentsProvider : ArgumentsProvider {
         override fun provideArguments(context: ExtensionContext): Stream<out Arguments>? = of(
-            Arguments.of("""
+            Arguments.of(
+                """
             Button A: X+94, Y+34
             Button B: X+22, Y+67
             Prize: X=8400, Y=5400
@@ -70,7 +73,8 @@ class Day13Test {
             Button A: X+69, Y+23
             Button B: X+27, Y+71
             Prize: X=18641, Y=10279
-            """.trimIndent(), 875318608908),
+            """.trimIndent(), 875318608908
+            ),
             Arguments.of(input.readText(), 91649162972270)
         )
     }

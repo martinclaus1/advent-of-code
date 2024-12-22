@@ -37,7 +37,8 @@ class Day8 {
     }
 
     private fun List<String>.asAntennas(): Map<Char, List<Point>> = flatMapIndexed { y, line ->
-        line.mapIndexed { index, c -> c to Point(index, y) } }
+        line.mapIndexed { index, c -> c to Point(index, y) }
+    }
         .groupBy { (key, _) -> key }
         .mapValues { (_, value) -> value.map { it.second } }
         .filterKeys { it.isLetterOrDigit() }

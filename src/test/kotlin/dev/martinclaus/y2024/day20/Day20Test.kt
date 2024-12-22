@@ -1,7 +1,6 @@
 package dev.martinclaus.y2024.day20
 
 import dev.martinclaus.readText
-import dev.martinclaus.y2024.day19.Day19
 import org.junit.jupiter.api.extension.ExtensionContext
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
@@ -32,7 +31,8 @@ class Day20Test {
 
     class PartIArgumentsProvider : ArgumentsProvider {
         override fun provideArguments(context: ExtensionContext): Stream<out Arguments>? = of(
-            Arguments.of("""
+            Arguments.of(
+                """
             ###############
             #...#...#.....#
             #.#.#.#.#.###.#
@@ -48,14 +48,16 @@ class Day20Test {
             #.#.#.#.#.#.###
             #...#...#...###
             ###############
-            """.trimIndent(), 2, 44),
+            """.trimIndent(), 2, 44
+            ),
             Arguments.of(input.readText(), 100, 1454)
         )
     }
 
     class PartIIArgumentsProvider : ArgumentsProvider {
         override fun provideArguments(context: ExtensionContext): Stream<out Arguments>? = of(
-            Arguments.of("""
+            Arguments.of(
+                """
             ###############
             #...#...#.....#
             #.#.#.#.#.###.#
@@ -71,7 +73,8 @@ class Day20Test {
             #.#.#.#.#.#.###
             #...#...#...###
             ###############
-            """.trimIndent(), 50, 285),
+            """.trimIndent(), 50, 285
+            ),
             Arguments.of(input.readText(), 100, 997879)
         )
     }

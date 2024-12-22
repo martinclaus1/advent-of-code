@@ -13,7 +13,7 @@ class Day20 {
     }
 
     fun partII(input: String, minimalSavedDistance: Int): Long {
-        return solve(input, 20 ,minimalSavedDistance)
+        return solve(input, 20, minimalSavedDistance)
     }
 
     private fun solve(input: String, cheats: Int, minimalSavedDistance: Int): Long {

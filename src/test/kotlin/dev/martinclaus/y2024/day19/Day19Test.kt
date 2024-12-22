@@ -31,7 +31,8 @@ class Day19Test {
 
     class PartIArgumentsProvider : ArgumentsProvider {
         override fun provideArguments(context: ExtensionContext): Stream<out Arguments>? = of(
-            Arguments.of("""
+            Arguments.of(
+                """
             r, wr, b, g, bwu, rb, gb, br
 
             brwrr
@@ -42,14 +43,16 @@ class Day19Test {
             bwurrg
             brgr
             bbrgwb
-            """.trimIndent(), 6),
+            """.trimIndent(), 6
+            ),
             Arguments.of(input.readText(), 350)
         )
     }
 
     class PartIIArgumentsProvider : ArgumentsProvider {
         override fun provideArguments(context: ExtensionContext): Stream<out Arguments>? = of(
-            Arguments.of("""
+            Arguments.of(
+                """
             r, wr, b, g, bwu, rb, gb, br
 
             brwrr
@@ -60,7 +63,8 @@ class Day19Test {
             bwurrg
             brgr
             bbrgwb
-            """.trimIndent(), 16),
+            """.trimIndent(), 16
+            ),
             Arguments.of(input.readText(), 769668867512623)
         )
     }

@@ -31,7 +31,8 @@ class Day10Test {
 
     class PartIArgumentsProvider : ArgumentsProvider {
         override fun provideArguments(context: ExtensionContext): Stream<out Arguments>? = of(
-            Arguments.of("""
+            Arguments.of(
+                """
             89010123
             78121874
             87430965
@@ -40,14 +41,16 @@ class Day10Test {
             32019012
             01329801
             10456732
-            """.trimIndent(), 36),
+            """.trimIndent(), 36
+            ),
             Arguments.of(input.readText(), 468)
         )
     }
 
     class PartIIArgumentsProvider : ArgumentsProvider {
         override fun provideArguments(context: ExtensionContext): Stream<out Arguments>? = of(
-            Arguments.of("""
+            Arguments.of(
+                """
             89010123
             78121874
             87430965
@@ -56,7 +59,8 @@ class Day10Test {
             32019012
             01329801
             10456732
-            """.trimIndent(), 81),
+            """.trimIndent(), 81
+            ),
             Arguments.of(input.readText(), 966)
         )
     }

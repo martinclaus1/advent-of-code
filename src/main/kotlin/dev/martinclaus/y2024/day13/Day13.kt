@@ -3,7 +3,7 @@ package dev.martinclaus.y2024.day13
 /**
  * --- Day 13: Claw Contraption ---
  */
-class Day13{
+class Day13 {
 
     companion object {
         const val ADDEND = 10000000000000

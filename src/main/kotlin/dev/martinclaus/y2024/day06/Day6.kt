@@ -31,17 +31,17 @@ class Day6 {
             var direction = Direction.NORTH
             while (true) {
                 // path already visited
-                if(!visited.add(point to direction)) {
+                if (!visited.add(point to direction)) {
                     return@count true
                 }
 
                 // left grid -> no loop
-                if(lines.get(point) == null) {
+                if (lines.get(point) == null) {
                     return@count false
                 }
 
                 // move to next point
-                if(lines.get(point + direction) == blockedCell || point + direction == obstacle) {
+                if (lines.get(point + direction) == blockedCell || point + direction == obstacle) {
                     direction += Direction.EAST
                 } else {
                     point += direction

@@ -59,7 +59,7 @@ class Day4 {
 
         for (row in 0 until rows) {
             for (col in 0 until cols) {
-                if(grid[row][col] == 'A') {
+                if (grid[row][col] == 'A') {
                     val result = directions.mapNotNull { direction ->
                         val newRow = row + direction.y
                         val newCol = col + direction.x
@@ -70,7 +70,7 @@ class Day4 {
                         }
                     }
 
-                    if(result.size == 4 && result[0] != result[1] && result[2] != result[3] && result.all { it in "MS" }) {
+                    if (result.size == 4 && result[0] != result[1] && result[2] != result[3] && result.all { it in "MS" }) {
                         count++
                     }
                 }
@@ -82,8 +82,8 @@ class Day4 {
 }
 
 enum class Direction(val y: Int, val x: Int) {
-    DOWN_RIGHT(1,1),
-    UP_LEFT(-1,-1),
-    UP_RIGHT(-1,1),
-    DOWN_LEFT(1,-1)
+    DOWN_RIGHT(1, 1),
+    UP_LEFT(-1, -1),
+    UP_RIGHT(-1, 1),
+    DOWN_LEFT(1, -1)
 }

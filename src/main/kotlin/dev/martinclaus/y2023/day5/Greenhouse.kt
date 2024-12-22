@@ -13,7 +13,11 @@ fun main() {
         5,
         "If You Give A Seed A Fertilizer",
         "What is the lowest location number that corresponds to any of the initial seed numbers? ${partI(input)}",
-        "What is the lowest location number that corresponds to any of the initial seed numbers (listed in ranges)? ${partII(input)}",
+        "What is the lowest location number that corresponds to any of the initial seed numbers (listed in ranges)? ${
+            partII(
+                input
+            )
+        }",
     )
 }
 

@@ -31,7 +31,8 @@ class Day12Test {
 
     class PartIArgumentsProvider : ArgumentsProvider {
         override fun provideArguments(context: ExtensionContext): Stream<out Arguments>? = of(
-            Arguments.of("""
+            Arguments.of(
+                """
             RRRRIICCFF
             RRRRIICCCF
             VVRRRCCFFF
@@ -42,14 +43,16 @@ class Day12Test {
             MIIIIIJJEE
             MIIISIJEEE
             MMMISSJEEE
-            """.trimIndent(), 1930),
+            """.trimIndent(), 1930
+            ),
             Arguments.of(input.readText(), 1465112)
         )
     }
 
     class PartIIArgumentsProvider : ArgumentsProvider {
         override fun provideArguments(context: ExtensionContext): Stream<out Arguments>? = of(
-            Arguments.of("""
+            Arguments.of(
+                """
             RRRRIICCFF
             RRRRIICCCF
             VVRRRCCFFF
@@ -60,7 +63,8 @@ class Day12Test {
             MIIIIIJJEE
             MIIISIJEEE
             MMMISSJEEE
-            """.trimIndent(), 1206),
+            """.trimIndent(), 1206
+            ),
             Arguments.of(input.readText(), 893790)
         )
     }
